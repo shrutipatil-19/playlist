@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/2a0d6ac336.js" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="/css/style.css"> -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        h4 {
+            padding: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .fa-circle-play,
+        .fa-plus {
+            color: white;
+            font-size: 1rem;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px 1px rgba(149, 144, 144, 0.2);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background: linear-gradient(to right, #efebe9, #4e342e);
+            padding: 15px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            cursor: pointer;
+            width: 10px;
+        }
+
+        .container {
+            height: 100vh;
+            width: 100%;
+            display: grid;
+            grid-template-rows: 90% 10%;
+            grid-template-columns: repeat(1, 25%) 75%;
+        }
+/* 
+        .navbar {
+            display: flex;
+            background-color: #090b1a;
+            height: 100vh;
+            width: 100%;
+
+        } */
+
+        nav {
+            width: 100%;
+        }
+
+        .aside {
+            background-color: #090b1a;
+        }
+
+        #click1 {
+            color: wheat;
+            position: absolute;
+            right: 1rem;
+            padding: 10px;
+            display: none;
+        }
+
+        .first-box ul {
+            list-style: none;
+        }
+
+        .first-box .box,
+        .sec-box .box {
+            display: flex;
+            padding: 0.5rem;
+            margin: 0.5rem;
+        }
+
+        .first-box .box .fa-solid {
+            color: white;
+            padding: 0 0.6rem;
+        }
+
+        .first-box ul li a,
+        .sec-box ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .sec-box ul {
+            list-style: none;
+        }
+
+        .third-box {
+
+            width: 100%;
+            /* border: 2px solid white; */
+            overflow: auto;
+            margin-top: 50px;
+            /* display: none; */
+        }
+
+        .third-box li {
+            display: flex;
+            margin-top: 10px;
+            margin-left: 10px;
+            list-style: none;
+            position: relative;
+            align-items: center;
+            cursor: pointer;
+            color: whitesmoke;
+        }
+
+        .third-box li:hover {
+            background-color: rgba(40, 35, 35, 0.6);
+        }
+
+        .third-box li span {
+            font-size: 1rem;
+        }
+
+        .third-box li .music-box-img {
+            height: 2.2rem;
+            width: 2.2rem;
+            object-fit: cover;
+            margin-left: 15px;
+        }
+
+        .third-box li .main-title {
+            margin-left: 15px;
+
+        }
+
+        .third-box li .main-title .title {
+            font-size: 1rem;
+        }
+
+        .third-box li .main-title .subtitle {
+            font-size: 0.8rem;
+        }
+
+        .third-box li .play-now {
+            font-size: 1rem;
+            right: 30px;
+            top: 10px;
+            position: absolute;
+            cursor: pointer;
+        }
+
+        .third-box li .pause-now {
+            font-size: 1rem;
+            right: 30px;
+            top: 10px;
+            position: absolute;
+            cursor: pointer;
+            display: none;
+
+        }
+
+
+        .main {
+            background-color: rgb(22, 21, 21);
+            color: whitesmoke;
+            max-width: 100vw;
+            overflow: auto;
+        }
+
+        #click {
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .sec1 {
+            width: 970px;
+            overflow: auto;
+            height: 100%;
+            width: 100%;
+        }
+
+        .sec1>h2 {
+            margin-top: 2rem;
+            margin-left: 2rem;
+            font-size: 1.8rem;
+        }
+
+        .image {
+            display: flex;
+            overflow: auto;
+            height: 300px;
+            background-color: rgb(131, 131, 193);
+        }
+
+        .img:hover {
+            transform: scale(1.1);
+
+        }
+
+        .head {
+            display: flex;
+        }
+
+        .new {
+            color: green;
+            font-size: 2rem;
+            top: 152px;
+            left: 150px;
+            position: absolute;
+        }
+
+        .img img {
+            height: 12rem;
+            width: 12rem;
+            object-fit: cover;
+            cursor: pointer;
+            margin: 1rem;
+            clip-path: circle(46.7% at 50% 50%);
+            position: relative;
+            transition: all 0.6s;
+        }
+
+        .para1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.2rem;
+        }
+
+        
+        .footer {
+            display: flex;
+            align-items: center;
+            background-color: #090b1a;
+            grid-column: 1/-1;
+            color: whitesmoke;
+            /* box-shadow: 2px 2px rgb(154, 147, 147), 2px 2px rgb(174, 174, 165);
+    border: 1px solid white; */
+            overflow: hidden;
+        }
+
+        .wave {
+            height: 40px;
+            width: 40px;
+            display: flex;
+            align-items: flex-end;
+            margin-left: 30px;
+            opacity: 0;
+        }
+
+        .wave .wave1 {
+            height: 10px;
+            width: 3px;
+            background-color: green;
+            margin: 2px;
+            animation: wave .5s linear infinite;
+            border-radius: 10px;
+
+        }
+
+        .wave .wave1:nth-child(2) {
+            height: 15px;
+            animation-delay: .4s;
+        }
+
+        .wave .wave1:nth-child(3) {
+            height: 8px;
+            animation-delay: .8s;
+        }
+
+        /* javasrcipt  */
+
+        /* .wave .active2 .wave1{
+    animation: wave .5s linear infinite;
+}
+.wave .active2 .wave1:nth-child(2){
+    animation-delay: .4s;
+}
+.wave .active2.wave1:nth-child(3){
+    animation-delay: .8s;
+} */
+        @keyframes wave {
+            0% {
+                height: 10px;
+            }
+
+            50% {
+                height: 20px;
+            }
+
+            100% {
+                height: 10px;
+            }
+        }
+
+        footer .music-box-img {
+            height: 40px;
+            width: 40px;
+            object-fit: cover;
+        }
+        #title {
+            padding: 0 0.5rem;
+        }
+        footer h5 {
+            font-size: 17px;
+            font-weight: bolder;
+            width: 8rem;
+        }
+
+        h5 .subtitle {
+            color: grey;
+        }
+
+        footer .icon {
+            font-size: 20px;
+        }
+
+        footer .icon .fa-solid {
+            cursor: pointer;
+            outline: none;
+        }
+
+        footer .icon .fa-play,
+        .fa-pause {
+            border: 1px solid rgba(149, 144, 144, .1);
+            border-radius: 50px;
+            padding: 1px 3px 0px 6px;
+            margin: 0px 10px;
+            transition: .3s linear;
+
+        }
+
+        footer .icon #pause {
+            display: none;
+            font-size: 20px;
+        }
+
+        footer span {
+            font-size: 14px;
+            width: 32px;
+            font-weight: 400
+        }
+        footer .bar {
+            position: relative;
+            background: rgb(105, 105, 170, .1);
+            width: 35%;
+            height: 2px;
+            margin: 0px 15px 0px 10px;
+            cursor: pointer;
+        }
+
+        footer .bar2 {
+            position: absolute;
+            background-color: #36e2ec;
+            height: 100%;
+            width: 0%;
+            top: 0;
+        }
+
+        footer .bar .dot {
+            position: absolute;
+            height: 5px;
+            width: 5px;
+            background:#36e2ec;
+            border-radius: 50px;
+            transition: 1s linear;
+            top: -1px;
+            left: 0%;
+            /* animation: progress-bar 220s infinite;
+    animation-delay: 0.4s; */
+            animation: none;
+        }
+
+        @keyframes progress-bar {
+            0% {
+                width: 0%;
+            }
+
+            25% {
+                width: 25%;
+            }
+
+            50% {
+                width: 50%;
+            }
+
+            75% {
+                width: 75%;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        footer .bar .dot:before {
+            content: "";
+            position: absolute;
+            height: 15px;
+            width: 15px;
+            border: 1px solid #36e2ec;
+            border-radius: 50px;
+            top: -6px;
+            left: -6px;
+            box-shadow: inset 0px 0px 3px #36e2ec;
+            cursor: pointer;
+
+        }
+
+        footer .bar input {
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            z-index: 999999999;
+            transition: 3s linear;
+            top: -6px;
+            left: 0;
+            cursor: pointer;
+        }
+
+
+        footer .vol {
+            margin-left: 40px;
+            display: flex;
+        }
+
+        footer .vol input {
+            margin: 0px 10px;
+        }
+
+        footer .join {
+            display: flex;
+            align-items: center;
+        }
+
+        .wave {
+            margin-left: 10px;
+        }
+
+        footer .icon {
+            font-size: 20px;
+        }
+        footer .play-btn-bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        footer .straight-line {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+        @media screen and (max-width:1025px) and (min-width:951px) {
+            .third-box {
+                height: 20rem;
+            }
+        }
+
+        @media screen and (max-width:950px) and (min-width:600px) {
+            .container {
+                grid-template-columns: repeat(1, 35%) 65%;
+            }
+
+            .main-album {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .album {
+                margin: 0rem;
+            }
+
+            .album1 {
+                padding: 0.7rem;
+                margin: 0.3rem;
+            }
+
+            .album1 img {
+                height: 8rem;
+                width: 8rem;
+                object-fit: cover;
+            }
+        }
+
+        @media screen and (max-width:599px) and (min-width:300px) {
+            .container {
+                grid-template-columns: repeat(1, 100%);
+            }
+
+            aside {
+                position: fixed;
+                background: black;
+                top: 0;
+                z-index: 1;
+                max-width: 100vw;
+                left: -100%;
+                width: 100%;
+                height: 90%;
+                transition: all 0.5s;
+            }
+
+            aside.active {
+                left: 0%;
+            }
+
+            .third-box {
+                height: 70%;
+            }
+
+            .album {
+                max-width: 100vw;
+                margin: 0.5rem;
+            }
+
+            .img img {
+                height: 11rem;
+                width: 11rem;
+            }
+
+            .main-album {
+                height: 100%;
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .album1:hover {
+                background-color: rgb(88, 76, 76);
+                transform: scale(1);
+            }
+
+            .album1 img {
+                height: 8rem;
+                width: 8rem;
+                object-fit: cover;
+            }
+
+            .album1 {
+                padding: 0.7rem;
+                margin: 4px;
+                height: 100%;
+                width: 100%;
+                transition: all 0.6s;
+            }
+
+            #click1 {
+                display: block;
+            }
+
+            #click {
+                display: block;
+            }
+
+            .new {
+                color: green;
+                font-size: 1rem;
+            }
+
+            footer .bar {
+                display: none;
+            }
+
+            footer span {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width:299px) and (min-width:0px) {
+            .container {
+                grid-template-columns: repeat(1, 100%);
+            }
+
+            .image {
+                height: auto;
+            }
+
+            .img img {
+                height: 6rem;
+                width: 6rem;
+                margin: 0.7rem;
+            }
+
+            .para1 {
+                font-size: 1rem;
+            }
+
+
+            aside {
+                position: fixed;
+                background: black;
+                top: 0;
+                z-index: 1;
+                max-width: 100vw;
+                left: -100%;
+                width: 100%;
+                height: 90%;
+                transition: all 0.5s;
+            }
+
+            aside .active {
+                left: 0%;
+            }
+
+            .third-box {
+                height: 90%;
+            }
+
+            .album {
+                max-width: 100vw;
+                margin: 0.5rem auto;
+            }
+
+            .main-album {
+                height: 100%;
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .album1:hover {
+                background-color: rgb(88, 76, 76);
+                transform: scale(1);
+            }
+
+            .album1 img {
+                height: 7rem;
+                width: 7rem;
+            }
+
+            .album1 {
+                padding: 0.4rem;
+                margin: 4px;
+                height: 100%;
+                width: 100%;
+                transition: all 0.6s;
+            }
+
+            .sec1 .album .album1 .fa-solid {
+                display: none;
+            }
+
+            .new {
+                color: green;
+                font-size: 1rem;
+            }
+
+            #click1 {
+                display: block;
+            }
+
+            #click {
+                display: block;
+            }
+
+            footer .bar {
+                display: none;
+            }
+
+            footer span {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <aside class="aside">
+            <div class="first-box">
+                <ul>
+                    <div class="box">
+                        <i class="fa-solid fa-house"></i>
+                        <li><a href="/html/index.html">Home</a></li>
+                    </div>
+                    <div class="box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <li><a href="#" id="search-artist">Search</a></li>
+                    </div>
+                    <!-- <div class="box">
+                            <i class="fa-solid fa-heart"></i>
+                            <li><a href="">Liked Songs</a></li>
+                        </div> -->
+                </ul>
+            </div>
+            <div class="sec-box">
+                <ul>
+                    <div class="box">
+                        <i class="fa-solid fa-plus"></i>
+                        <li><a href="">Create Playlist</a></li>
+                    </div>
+                </ul>
+            </div>
+        </aside>
+        <main class="main">
+            <div class="heading">
+                <div class="sec1">
+                    <div class="image">
+                        <a href="/html/index.html"> <i class="fa-solid fa-circle-chevron-left"></i></a>
+                        <!-- <i class="fa-solid fa-circle-chevron-right"></i> -->
+                        <div class="img" id="img2"><img src="/img/arjitsingh.jpg" alt="">
+                        </div>
+                        <div class="head">
+                            <span class="para1">Arijit Singh</span>
+                        </div>
+                    </div>
+                    <div class="playlist">
+                        <h4>Playlist</h4>
+                        <div class="third-box">
+                            <li id="4" class="songitem">
+                                <span>01</span>
+                                <img class="music-box-img" src="/img/20.jpg" alt="">
+                                <div class="main-title">
+                                    <h5 class="title"> Agar tum saath ho<p class="subtitle">arijit singh</h5>
+                                </div>
+                                <i id="4" class="play-now fa-solid fa-circle-play"></i>
+
+                            </li>
+                            <li id="8" class="songitem">
+                                <span>02</span>
+                                <img class="music-box-img" src="/img/1.jpg" alt="">
+                                <div class="main-title">
+                                    <h5 class="title"> Hawayein<p class="subtitle">arijit singh</h5>
+                                </div>
+                                <i id="8" class="play-now fa-solid fa-circle-play"></i>
+
+                            </li>
+                            <li id="9" class="songitem">
+                                <span>03</span>
+                                <img class="music-box-img" src="/img/2.jpg" alt="">
+                                <div class="main-title">
+                                    <h5 class="title">Hamari adhuri kahani<p class="subtitle">arijit arijit singh</h5>
+                                </div>
+                                <i id="9" class="play-now fa-solid fa-circle-play"></i>
+                            </li>
+                            <li id="11" class="songitem">
+                                <span>04</span>
+                                <img class="music-box-img" src="/img/20.jpg" alt="">
+                                <div class="main-title">
+                                    <h5 class="title"> Tera yaar hoon main<p class="subtitle">arijit singh</h5>
+                                </div>
+                                <i id="11" class="play-now fa-solid fa-circle-play"></i>
+                            </li>
+                            <li id="13" class="songitem">
+                                <span>05</span>
+                                <img class="music-box-img" src="/img/13.jpg" alt="">
+                                <div class="main-title">
+                                    <h5 class="title"> Ae dil hai mushkil<p class="subtitle">arijit singh</h5>
+                                </div>
+                                <i id="13" class="play-now fa-solid fa-circle-play"></i>
+                            </li>
+                            <li id="21" class="songitem">
+                                <span>06</span>
+                                <img class="music-box-img" src="/img/18.jpg" alt="">
+                                <div class="main-title">
+                                    <h5 class="title">Soch na sake<p class="subtitle">arijit singh</h5>
+                                </div>
+                                <i id="21" class="play-now fa-solid fa-circle-play"></i>
+                            </li>
+                            <li id="22" class="songitem">
+                                <span>07</span>
+                                <img class="music-box-img" src="/img/18.jpg" alt="">
+                                <div class="main-title">
+                                    <h5 class="title"> Samjhawan<p class="subtitle">arijit singh</h5>
+                                </div>
+                                <i id="22" class="play-now fa-solid fa-circle-play"></i>
+                            </li>
+                            <li id="23" class="songitem">
+                                <span>08</span>
+                                <img class="music-box-img" src="/img/15.jpg" alt="">
+                                <div class="main-title">
+                                    <h5 class="title"> Enna sona<p class="subtitle">arijit singh</h5>
+                                </div>
+                                <i id="23" class="play-now fa-solid fa-circle-play"></i>
+                            </li>
+                            <li id="24" class="songitem">
+                                <span>09</span>
+                                <img class="music-box-img" src="/img/20.jpg" alt="">
+                                <div class="main-title">
+                                    <h5 class="title">Raabta<p class="subtitle">arijit singh</h5>
+                                </div>
+                                <i id="24" class="play-now fa-solid fa-circle-play"></i>
+                            </li>
+                            <li id="25" class="songitem">
+                                <span>10</span>
+                                <img class="music-box-img" src="/img/20.jpg" alt="">
+                                <div class="main-title">
+                                    <h5 class="title">Phir kabhi <p class="subtitle">arijit singh</h5>
+                                </div>
+                                <i id="25" class="play-now fa-solid fa-circle-play"></i>
+                            </li>
+                            <li id="26" class="songitem">
+                                <span>11</span>
+                                <img class="music-box-img" src="/img/20.jpg" alt="">
+                                <div class="main-title">
+                                    <h5 class="title">Dekh lena<p class="subtitle">arijit singh</h5>
+                                </div>
+                                <i id="26" class="play-now fa-solid fa-circle-play"></i>
+                            </li>
+                            <li id="27" class="songitem">
+                                <span>12</span>
+                                <img class="music-box-img" src="/img/27.jpg" alt="">
+                                <div class="main-title">
+                                    <h5 class="title">Teri meri kahani <p class="subtitle">arijit singh</h5>
+                                </div>
+                                <i id="27" class="play-now fa-solid fa-circle-play"></i>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+        <footer class="footer">
+            <div class="join">
+                <div class="wave">
+                    <div class="wave1"></div>
+                    <div class="wave1"></div>
+                    <div class="wave1"></div>
+                </div>
+                <img id="masterposter" class="music-box-img" src="/img/1.jpg" alt="" id="postermaster">
+                <h5 id="title">butter <p class="subtitle">(BTS)</p>
+                </h5>
+            </div>
+            <div class="play-btn-bar">
+                <div class="icon">
+                    <i id="back" class="fa-solid fa-backward-step"></i>
+                    <i class="fa-solid fa-play" id="play"></i>
+                    <i id="next" class="fa-solid fa-forward-step "></i>
+                </div>
+                <div class="straight-line">
+                    <span id="currentstart">0:00</span>
+                    <div class="bar" id="bar">
+                        <input type="range" name="range" id="seek" value="0" min="0" max="100">
+                        <div class="bar2" id="bar2"> </div>
+                        <div class="dot"></div>
+                    </div>
+                    <span id="currentend">0:00</span>
+                </div>
+            </div>
+    
+        </footer>
+    </div>
+    <script>
+        music = new Audio("/audio/1.mp3");
+//  music.play();
+
+const songs = [
+    {
+        id: "4",
+        songName: `<h5 class="title">Dekh lena</h5>
+        <p class="subtitle">Arijit Singh</p>
+        </h5>`,
+        poster: "/img/4.jpg"
+    },
+    {
+        id: "8",
+        songName: `<h5 class="title">Hamari adhuri kahani</h5>
+        <p class="subtitle">Arijit Singh</p>
+        </h5>`,
+        poster: "/img/8.jpg"
+    },
+     {
+        id: "9",
+        songName: `<h5 class="title">Phir kabhi</h5>
+        <p class="subtitle">Arijit Singh</p>
+        </h5>`,
+        poster:"/img/9.jpg"
+    },
+    {
+        id: "11",
+        songName: `<h5 class="title">Enna sona</h5>
+        <p class="subtitle">Arijit Singh</p>
+        </h5>`,
+        poster: "/img/11.jpg"
+    },
+     {
+        id: "13",
+        songName: `<h5 class="title">Ae dil hai mushkil</h5>
+        <p class="subtitle">Arijit Singh</p>
+        </h5>`,
+        poster:"/img/13.jpg"
+    },
+     {
+        id: "21",
+        songName: `<h5 class="title">Agar Tum Sath Ho</h5>
+        <p class="subtitle">Arijit Singh</p>
+        </h5>`,
+        poster:"/img/21.jpg"
+
+    },
+    {
+        id: "22",
+        songName: `<h5 class="title">Hawayein</h5>
+        <p class="subtitle">Arijit Singh</p>
+        </h5>`,
+        poster: "/img/22.jpg"
+    },
+     {
+        id: "23",
+        songName: `<h5 class="title">Tera yaar hoon main</h5>
+        <p class="subtitle">Arijit Singh</p>
+        </h5>`,
+        poster: "/img/23.jpg"
+    },
+    {
+        id: "24",
+        songName: `<h5 class="title">Soch na sake</h5>
+        <p class="subtitle">Arijit Singh</p>
+        </h5>`,
+        poster: "/img/24.jpg"
+    },
+    {
+        id: "25",
+        songName: `<h5 class="title">Samjhawan</h5>
+        <p class="subtitle">Arijit Singh</p>
+        </h5>`,
+        poster: "/img/25.jpg"
+    },
+     {
+        id: "26",
+        songName: `<h5 class="title">Raabta</h5>
+        <p class="subtitle">Aijit Singh</p>
+        </h5>`,
+        poster: "/img/26.jpg"
+    },
+    {
+        id: "27",
+        songName: `<h5 class="title">Teri meri kahani</h5>
+        <p class="subtitle">Arijit Singh</p>
+        </h5>`,
+        poster: "/img/27.jpg"
+    },
+]
+Array.from(document.getElementsByClassName("songitem")).forEach((Element, i) => {
+    Element.getElementsByTagName("img")[0].src = songs[i].poster;
+
+    Element.getElementsByTagName("h5")[0].innerHTML = songs[i].songName;
+})
+
+let play = document.getElementById("play");
+        let wave = document.getElementsByClassName("wave");
+
+        play.addEventListener("click", function () {
+            if (music.paused || music.currentTime <= 0) {
+                music.play();
+                play.classList.remove("fa-play");
+                play.classList.add("fa-pause");
+                document.querySelector(".wave").style.opacity = "1";
+            }
+            else {
+                music.pause();
+                play.classList.add("fa-play");
+                play.classList.remove("fa-pause");
+                document.querySelector(".wave").style.opacity = "0";
+            }
+        })
+        const makeAllPlay = () => {
+            Array.from(document.getElementsByClassName("play-now")).forEach((element) => {
+                element.classList.add("fa-circle-play");
+                element.classList.remove("fa-circle-pause");
+            })
+        }
+        // const makeAllBackgrounds = () => {
+        //     Array.from(document.getElementsByClassName("songitem")).forEach((element) => {
+        //         element.style.background = "rgba(105, 1005, 170,.1)";
+        //     })
+        // }
+        let index = 0;
+        let masterPoster = document.getElementById("masterposter");
+        let masterTitle = document.getElementById("title");
+        Array.from(document.getElementsByClassName("play-now")).forEach((element) => {
+            element.addEventListener("click", (e) => {
+                index = e.target.id;
+                if (music.paused || music.currentTime <= 0) {
+                    makeAllPlay();
+                    e.target.classList.remove("fa-circle-play");
+                    e.target.classList.add("fa-circle-pause");
+                    music.src = `/audio/${index}.mp3`;
+                    masterPoster.src = `/img/${index}.jpg`;
+                    music.play();
+                    let song_title = songs.filter((ele) => {
+                        return ele.id == index;
+                    })
+                    song_title.forEach(ele => {
+                        let { songName } = ele;
+                        masterTitle.innerHTML = songName;
+                    })
+                    play.classList.remove("fa-play");
+                    play.classList.add("fa-pause");
+                    document.querySelector(".wave").style.opacity = "1";
+                }
+                else {
+                    makeAllPlay();
+                    e.target.classList.add("fa-circle-play");
+                    e.target.classList.remove("fa-circle-pause");
+                    music.src = `/audio/${index}.mp3`;
+                    masterPoster.src = `/img/${index}.jpg`;
+                    music.pause();
+                    let song_title = songs.filter((ele) => {
+                        return ele.id == index;
+                    })
+                    song_title.forEach(ele => {
+                        let { songName } = ele;
+                        masterTitle.innerHTML = songName;
+                    })
+                    play.classList.add("fa-play");
+                    play.classList.remove("fa-pause");
+                    document.querySelector(".wave").style.opacity = "0";
+                }
+               
+                music.addEventListener("ended", () => {
+                    play.classList.add("fa-play");
+                    play.classList.remove("fa-pause");
+                    e.target.classList.add("fa-circle-play");
+                    e.target.classList.remove("fa-circle-pause");
+                    document.querySelector(".wave").style.opacity = "0";
+                })
+                // makeAllBackgrounds();
+                // Array.from(document.getElementsByClassName("songitem"))[`${index - 1}`].style.background = "rgba(105,105,170,.1)";
+            })
+        })
+
+        let currentStart = document.getElementById("currentstart");
+        let currentEnd = document.getElementById("currentend");
+        let seek = document.getElementById("seek");
+        let bar2 = document.getElementById("bar2");
+        let dot = document.getElementsByClassName("dot")[0];
+        music.addEventListener("timeupdate", () => {
+            let music_curr = music.currentTime;
+            let music_dur = music.duration;
+
+            let min = Math.floor(music_dur / 60);
+            let sec = Math.floor(music_dur % 60);
+
+            if (sec < 10) {
+                sec = `0${sec}`
+            }
+            currentEnd.innerHTML = `${min}:${sec}`;
+            let min1 = Math.floor(music_curr / 60);
+            let sec1 = Math.floor(music_curr % 60);
+
+            if (sec1 < 10) {
+                sec1 = `0${sec1}`
+            }
+            currentStart.innerHTML = `${min1}:${sec1}`;
+
+            let progressBar = parseInt((music.currentTime / music.duration) * 100);
+            seek.value = progressBar;
+            let seekbar = seek.value;
+            bar2.style.width = `${seekbar}%`;
+            dot.style.left = `${seekbar}%`;
+        })
+        seek.addEventListener("change", () => {
+            music.currentTime = seek.value * music.duration / 100;
+        })
+        music.addEventListener("ended", () => {
+            play.classList.add("fa-play");
+            play.classList.remove("fa-pause");
+            document.querySelector(".wave").style.opacity = "0";
+        })
+
+    
+        let back = document.getElementById("back");
+let next = document.getElementById("next");
+let play_now = document.getElementsByClassName("play-now");
+back.addEventListener("click", () => {
+    index -= 1;
+    if (index < 1 ) {
+        index = Array.from(document.getElementsByClassName("songitem")).length;
+
+    }
+    music.src = `/audio/${index}.mp3`;
+    masterPoster.src = `/img/${index}.jpg`;
+    music.play();
+    let song_title = songs.filter((ele) => {
+        return ele.id == index;
+    })
+    song_title.forEach(ele => {
+        let { songName } = ele;
+        masterTitle.innerHTML = songName;
+    })
+
+    makeAllPlay();
+    document.getElementById(`${index}`).classList.remove("fa-circle-play");
+    document.getElementById(`${index}`).classList.add("fa-circle-fa-pause");
+    play.classList.add("fa-pause");
+    play.classList.remove("fa-play");
+    document.querySelector(".wave").style.opacity = "1";
+
+    // makeAllBackgrounds();
+    // Array.from(document.getElementsByClassName("songitem"))[`${index - 1}`].style.background = "rgba(105,105,170,.1)";
+})
+next.addEventListener("click", () => {
+    index -= 0;
+    index += 1;
+    if (index > Array.from(document.getElementsByClassName("songitem")).length) {
+        index = 1;
+    }
+    music.src = `/audio/${index}.mp3`;
+    masterPoster.src = `/img/${index}.jpg`;
+    music.play();
+    let song_title = songs.filter((ele) => {
+        return ele.id == index;
+    })
+    song_title.forEach(ele => {
+        let { songName } = ele;
+        masterTitle.innerHTML = songName;
+    })
+    makeAllPlay();
+    document.getElementById(`${index}`).classList.remove("fa-circle-play");
+    document.getElementById(`${index}`).classList.add("fa-circle-fa-pause");
+    play.classList.add("fa-pause");
+    play.classList.remove("fa-play");
+    document.querySelector(".wave").style.opacity = "1";
+    // makeAllBackgrounds();
+    // Array.from(document.getElementsByClassName("songitem"))[`${index - 1}`].style.background = "rgba(105,105,170,.1)";
+})
+    </script>
+</body>
+
+</html>
